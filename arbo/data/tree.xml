@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+ <branches>
+   <branch name="Production">
+   	 <team name="Gamification">
+   	   <person
+   	     name="Laurent"
+   	     gender="M"
+   	     age="23"
+   	   />
+   	   <person
+   	     name="Dora"
+   	     gender="F"
+   	     age="35"
+   	   />
+   	 </team>
+   </branch>
+
+   <branch name="R+D">
+   	 <team name="Employee satisfaction">
+   	   <person
+   	     name="Mickey"
+   	     gender="U"
+   	     age="75"
+   	   />
+   	 </team>
+   	 <team name="UX evolution">
+   	   <person
+   	     name="Nicole"
+   	     gender="F"
+   	     age="23"
+   	   />
+   	 </team>
+   	 <team name="Software security">
+   	   <person
+   	     name="Miguelita"
+   	     gender="F"
+   	     age="38"
+   	   />
+   	   <person
+   	     name="Hector"
+   	     gender="M"
+   	     age="45"
+   	   />
+   	   <person
+   	     name="Andres"
+   	     gender="M"
+   	     age="48"
+   	   />
+   	 </team>
+   </branch>
+   
+   <branch name="Lolilol">
+       <team name="Employee satisfaction">
+         <person
+           name="Mickey"
+           gender="U"
+           age="75"
+         />
+       </team>
+       <team name="UX evolution">
+         <person
+           name="Nicole"
+           gender="F"
+           age="23"
+         />
+       </team>
+       <team name="Software security">
+         <person
+           name="Miguelita"
+           gender="F"
+           age="38"
+         />
+         <person
+           name="Hector"
+           gender="M"
+           age="45"
+         />
+         <person
+           name="Andres"
+           gender="M"
+           age="48"
+         />
+       </team>
+   </branch>
+
+   <branch name="Youpala">
+       <team name="Employee satisfaction">
+         <person
+           name="Mickey"
+           gender="U"
+           age="75"
+         />
+       </team>
+       <team name="UX evolution">
+         <person
+           name="Nicole"
+           gender="F"
+           age="23"
+         />
+       </team>
+       <team name="UX evolution">
+         <person
+           name="Nicole"
+           gender="F"
+           age="23"
+         />
+       </team>
+       <team name="UX evolution">
+         <person
+           name="Nicole"
+           gender="F"
+           age="23"
+         />
+       </team>
+   </branch>
+
+   <branch name="Patapouf">
+      <team name="Software security">
+         <person
+           name="Miguelita"
+           gender="F"
+           age="38"
+         />
+         <person
+           name="Hector"
+           gender="M"
+           age="45"
+         />
+         <person
+           name="Andres"
+           gender="M"
+           age="48"
+         />
+      </team>
+   </branch>
+   
+ </branches>
