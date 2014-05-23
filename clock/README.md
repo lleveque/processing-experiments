@@ -1,4 +1,4 @@
-videoRot
+clock
 ======================
 
-Rotate a quad within a screen, scaling to max space and keeping the aspect ratio.
+Nice, clean clock done using push/popMatrix()
