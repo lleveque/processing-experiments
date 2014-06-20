@@ -63,7 +63,7 @@ class PeerNetwork
     }
   }
   
-  synchronized void display()
+  synchronized void display(float rotationInfo)
   {
     for(Link l:links)
     {
@@ -72,7 +72,7 @@ class PeerNetwork
     
     for(Peer p:peers)
     {
-      p.display();
+      p.display(rotationInfo);
     }
   }
 }

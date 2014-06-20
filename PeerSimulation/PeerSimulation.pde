@@ -61,7 +61,7 @@ void draw()
   {
     rotate((float)(2*Math.PI*phase+offset));
   }
-  net.display();
+  net.display((float)(2*Math.PI*phase+offset));
 }
 
 void keyPressed() {
@@ -75,7 +75,7 @@ void keyPressed() {
       break;
     case 's':
       simu++;
-      nb_peers--;
+      nb_peers=max(0,nb_peers-1);
       setup();
       break;
     case 'm':
@@ -106,6 +106,8 @@ void keyPressed() {
 void drawInfo()
 {
   fill(255);
+  
+  textAlign(LEFT,BASELINE);
   text(
   "Simulation with "+nb_peers+" peers\n"+
   "Peers will publish between " + PUBLISH_MIN + " and " + (PUBLISH_MIN+PUBLISH_ADD) + " ms,\n"+

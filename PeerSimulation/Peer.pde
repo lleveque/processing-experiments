@@ -28,7 +28,7 @@ class Peer
      this.listener = new SimuListener(this);
   }
   
-  void display()
+  void display(float rotationInfo)
   {
     if(discoverable)
     {
@@ -36,6 +36,7 @@ class Peer
       
       stroke(255);
       
+      // Arrows
       synchronized(outlinks)
       {
         for(Peer p : outlinks)
@@ -52,6 +53,7 @@ class Peer
         }
       }
       
+      // Messages
       synchronized(outbox)
       {
         fill(255);
@@ -85,11 +87,21 @@ class Peer
       }
       
       ellipse(x, y, PEER_DIAMETER, PEER_DIAMETER);
-      text(this.identifier, x, y+35);
+      
+      // name tag
+      pushMatrix();
+        translate(x,y);
+        rotate(-rotationInfo);
+        textAlign(CENTER, CENTER);
+        theta = (float)Math.atan2(y,x);
+        float dx = 40 * cos(theta+rotationInfo);
+        float dy = 30 * sin(theta+rotationInfo);
+        text(this.identifier, dx, dy);
+      popMatrix();
     
 //      fill(128,255,128);
     }
-    else
+    else // not discoverable
     {
       fill(255,128,128);    
       ellipse(x, y, 10, 10);
