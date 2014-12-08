@@ -11,10 +11,13 @@
 Network neuralnet;
 
 PFont font;
+PFont defaultFont;
+LearningGraph graph;
+int trainingLevel;
 
 void setup()
 {
-  size(400,400);
+  size(400,600);
 
   font = loadFont("LucidaSans-20.vlw");
   textFont(font);
@@ -23,7 +26,8 @@ void setup()
   loadData();
   
   neuralnet = new Network(196,49,10);
-
+  graph = new LearningGraph();
+  
   background(220,204,255);
   noStroke();
   smooth();
@@ -40,6 +44,7 @@ boolean b_train = false, b_test = false;
 
 void draw()
 {
+  textFont(font);
   int response = -1, actual = -1;
   if (!b_dataloaded) {
     loadData();
@@ -55,6 +60,20 @@ void draw()
       actual = training_set[row].output;
       neuralnet.train(training_set[row].outputs); 
     }
+    
+    // keep track of the training level
+    trainingLevel += 500;
+    
+    // get accuracy data on all test set with this training
+    float accuracy = 0;
+    for (int row = 0; row < testing_set.length; row++)
+    {
+      response = neuralnet.respond(testing_set[row].inputs);
+      actual = testing_set[row].output;
+      accuracy = ((response==actual ? 1:0) + accuracy*row)/(row+1);
+    }
+    graph.add(trainingLevel, accuracy);
+    
   }
   else if (b_test) {
     int row = (int) floor(random(0,testing_set.length));
@@ -73,7 +92,10 @@ void draw()
     fill(0);
     text(str(response),350,27);
     text(str(actual),350,275);
+  
+    graph.draw(30, 430, 320, 140, 0, trainingLevel, 0, 1);
   }
+  
   fill(0);
 }
 
@@ -85,14 +107,6 @@ void mousePressed()
   else {
     b_train = true;
   }
-}
-
-void keyPressed()
-{
-  if(key=='g')
-  {
-    
-  }  
 }
 
 

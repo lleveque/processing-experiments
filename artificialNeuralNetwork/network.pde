@@ -78,6 +78,8 @@ class Network
   }
   void draw()
   {
+    float height = 400; // quick fix for adding some extra space on GUI
+    
     // note, this draw is hard-coded for Network(196,49,10)
     // which reflects my use of the MNIST database of handwritten digits
     for (int i = 0; i < m_input_layer.length; i++) {
