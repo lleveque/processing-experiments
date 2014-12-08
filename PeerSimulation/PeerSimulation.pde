@@ -57,11 +57,20 @@ void draw()
   net.placePeers();
   
   translate(width/2, height/2);
+  
+  float angle;
+  
   if(rotateOn)
   {
-    rotate((float)(2*Math.PI*phase+offset));
+    angle = (float)(2*Math.PI*phase+offset);
   }
-  net.display((float)(2*Math.PI*phase+offset));
+  else
+  {
+    angle = 0;
+  }
+  
+  rotate(angle);
+  net.display(angle);
 }
 
 void keyPressed() {
