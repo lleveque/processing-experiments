@@ -13,7 +13,6 @@ Network neuralnet;
 PFont font;
 PFont defaultFont;
 LearningGraph graph;
-int trainingLevel;
 
 void setup()
 {
@@ -26,7 +25,7 @@ void setup()
   loadData();
   
   neuralnet = new Network(196,49,10);
-  graph = new LearningGraph();
+  graph = new LearningGraph("Accuracy vs training");
   
   background(220,204,255);
   noStroke();
@@ -61,9 +60,6 @@ void draw()
       neuralnet.train(training_set[row].outputs); 
     }
     
-    // keep track of the training level
-    trainingLevel += 500;
-    
     // get accuracy data on all test set with this training
     float accuracy = 0;
     for (int row = 0; row < testing_set.length; row++)
@@ -72,7 +68,7 @@ void draw()
       actual = testing_set[row].output;
       accuracy = ((response==actual ? 1:0) + accuracy*row)/(row+1);
     }
-    graph.add(trainingLevel, accuracy);
+    graph.add(neuralnet.trainingLevel, accuracy);
     
   }
   else if (b_test) {
@@ -93,7 +89,7 @@ void draw()
     text(str(response),350,27);
     text(str(actual),350,275);
   
-    graph.draw(30, 430, 320, 140, 0, trainingLevel, 0, 1);
+    graph.draw(30, 430, 320, 140, 0, neuralnet.trainingLevel, 0, 1);
   }
   
   fill(0);

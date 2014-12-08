@@ -8,9 +8,11 @@ class LearningGraph
 {
   ArrayList<GraphPoint> data;
   float xMin = 0, xMax = 0, yMin = 0, yMax = 0; 
+  String title;
   
-  LearningGraph()
+  LearningGraph(String title)
   {
+    this.title = title;
     this.data = new ArrayList<GraphPoint>();
   }
   
@@ -63,7 +65,7 @@ class LearningGraph
     fill(255);
     rect(x,y,w,h);
     
-    // draw
+    // Axis and arrows
     stroke(0);
     line(x,y,x,y+h);
     line(x,y+h,x+w,y+h);
@@ -79,6 +81,7 @@ class LearningGraph
     float lpx = map(0, xMin, xMax, x, x+w);
     float lpy = map(0, yMin, yMax, y+h, y);
     
+    // Data points
     // TODO sort data before graphing
     for(GraphPoint p:this.data)
     {
@@ -98,19 +101,34 @@ class LearningGraph
     textFont(font, 10);
     if(this.data.size()>0)
     {
+      // Last data label
+      textAlign(LEFT,CENTER);
       text(str(this.data.get(this.data.size()-1).y),x+w+5,lpy);
+      
+      // Axis mins
       if(xMin==yMin)
       {
-        text(str(floor(xMin)),x-15,y+h+15);
+        textAlign(RIGHT,TOP);
+        text(str(floor(xMin)),x-5,y+h+5);
       }
       else
       {
-        text(str(floor(xMin)),x-5,y+h+20);
-        text(str(floor(yMin)),x-15,y+h+5);
+        textAlign(RIGHT,BOTTOM);
+        text(str(floor(yMin)),x-5,y+h);
+        textAlign(LEFT,TOP);
+        text(str(floor(xMin)),x,y+h+5);
       }
       
-      text(str(floor(xMax)),x+w,y+h+20);
-      text(str(floor(yMax)),x-15,y+5);
+      // Axis maxs
+      textAlign(LEFT,TOP);
+      text(str(floor(xMax)),x+w,y+h+5);
+      textAlign(RIGHT,TOP);
+      text(str(floor(yMax)),x-5,y);
+      
+      // Title
+      textAlign(CENTER);
+      text(title, x+w/2, y+h+20);
+      textAlign(LEFT);
     }
   }
 }

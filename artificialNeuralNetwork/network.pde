@@ -16,6 +16,9 @@ class Network
   Neuron [] m_input_layer; 
   Neuron [] m_hidden_layer;
   Neuron [] m_output_layer;
+  
+  int trainingLevel = 0;
+  
   // create a network specifying numbers of inputs, hidden layer neurons
   // and number of outputs, e.g. Network(4,4,3)
   Network(int inputs, int hidden, int outputs)
@@ -75,6 +78,7 @@ class Network
     }
     // the input layer doesn't learn:
     // it is simply the inputs
+    trainingLevel++;
   }
   void draw()
   {
